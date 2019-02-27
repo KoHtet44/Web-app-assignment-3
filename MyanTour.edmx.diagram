@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5546a81531c44f20942b44e77255077b" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="MyanTourModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.AspNetUsers" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Car" Width="1.5" PointX="6" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Car_Booking" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Cruies" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Cruies_Booking" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Express" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Express_Booking" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Flight" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyanTourModel.Flight_Booking" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="MyanTourModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Car_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Cruies_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Express_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Flight_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Car_VehID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Cruies_VehID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Express_VehID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.FK_Flight_VehID" ManuallyRouted="false" />
+        <AssociationConnector Association="MyanTourModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

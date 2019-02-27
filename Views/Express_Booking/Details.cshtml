@@ -1,0 +1,95 @@
+﻿@model MyanTour.Express_Booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<style>
+    #left {
+        float: left;
+        width: 50%;
+        overflow: hidden;
+    }
+
+    #right {
+        padding-top: 60px;
+        float: left;
+        width: 50%;
+        overflow: hidden;
+    }
+</style>
+<div id="left">
+    <h4>Express_Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FerryPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FerryPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Charges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Charges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Express.CarNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Express.CarNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,3 @@
+-Attach database from db folder into sql 2017
+-Change Connectionstring in Web.config
+-Run index from HomeController in browser

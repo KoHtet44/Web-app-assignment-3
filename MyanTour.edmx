@@ -1,0 +1,983 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyanTourModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CarNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="Seat" Type="int" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Car_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="128" />
+          <Property Name="VehicalID" Type="varchar" MaxLength="20" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="FerryPoint" Type="varchar" MaxLength="30" />
+          <Property Name="Loc" Type="varchar" MaxLength="150" />
+          <Property Name="Charges" Type="money" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Cruies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Captain" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="Seat" Type="varchar" MaxLength="60" />
+          <Property Name="AvailableSeat" Type="varchar" MaxLength="60" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Cruies_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="128" />
+          <Property Name="VehicalID" Type="varchar" MaxLength="20" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="FerryPoint" Type="varchar" MaxLength="30" />
+          <Property Name="Loc" Type="varchar" MaxLength="150" />
+          <Property Name="Charges" Type="money" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Express">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CarNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="Seat" Type="varchar" MaxLength="60" />
+          <Property Name="AvailableSeat" Type="varchar" MaxLength="60" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Express_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="128" />
+          <Property Name="VehicalID" Type="varchar" MaxLength="20" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="FerryPoint" Type="varchar" MaxLength="30" />
+          <Property Name="Loc" Type="varchar" MaxLength="150" />
+          <Property Name="Charges" Type="money" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MyanTour.dbo.ExpressPrice' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ExpressPrice">
+          <Property Name="LocFrom" Type="varchar" MaxLength="15" />
+          <Property Name="LocTo" Type="varchar" MaxLength="15" />
+          <Property Name="Price" Type="money" />
+        </EntityType>-->
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="flightCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pilot" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="Seat" Type="varchar" MaxLength="60" />
+          <Property Name="AvailableSeat" Type="varchar" MaxLength="60" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Flight_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="128" />
+          <Property Name="VehicalID" Type="varchar" MaxLength="20" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="FerryPoint" Type="varchar" MaxLength="30" />
+          <Property Name="Loc" Type="varchar" MaxLength="150" />
+          <Property Name="Charges" Type="money" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Car_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Car_Booking" Type="Self.Car_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Car_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_VehID">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Car_Booking" Type="Self.Car_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Car_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruies_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Cruies_Booking" Type="Self.Cruies_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cruies_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruies_VehID">
+          <End Role="Cruies" Type="Self.Cruies" Multiplicity="0..1" />
+          <End Role="Cruies_Booking" Type="Self.Cruies_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cruies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cruies_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Express_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Express_Booking" Type="Self.Express_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Express_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Express_VehID">
+          <End Role="Express" Type="Self.Express" Multiplicity="0..1" />
+          <End Role="Express_Booking" Type="Self.Express_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Express">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Express_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flight_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Flight_Booking" Type="Self.Flight_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flight_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flight_VehID">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="Flight_Booking" Type="Self.Flight_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flight_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyanTourModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car_Booking" EntityType="Self.Car_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cruies" EntityType="Self.Cruies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cruies_Booking" EntityType="Self.Cruies_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Express" EntityType="Self.Express" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Express_Booking" EntityType="Self.Express_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight_Booking" EntityType="Self.Flight_Booking" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Car_UserID" Association="Self.FK_Car_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Car_Booking" EntitySet="Car_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_VehID" Association="Self.FK_Car_VehID">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Car_Booking" EntitySet="Car_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruies_UserID" Association="Self.FK_Cruies_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cruies_Booking" EntitySet="Cruies_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruies_VehID" Association="Self.FK_Cruies_VehID">
+            <End Role="Cruies" EntitySet="Cruies" />
+            <End Role="Cruies_Booking" EntitySet="Cruies_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Express_UserID" Association="Self.FK_Express_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Express_Booking" EntitySet="Express_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Express_VehID" Association="Self.FK_Express_VehID">
+            <End Role="Express" EntitySet="Express" />
+            <End Role="Express_Booking" EntitySet="Express_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flight_UserID" Association="Self.FK_Flight_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Flight_Booking" EntitySet="Flight_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flight_VehID" Association="Self.FK_Flight_VehID">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="Flight_Booking" EntitySet="Flight_Booking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyanTourModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Car_Booking" Relationship="Self.FK_Car_UserID" FromRole="AspNetUsers" ToRole="Car_Booking" />
+          <NavigationProperty Name="Cruies_Booking" Relationship="Self.FK_Cruies_UserID" FromRole="AspNetUsers" ToRole="Cruies_Booking" />
+          <NavigationProperty Name="Express_Booking" Relationship="Self.FK_Express_UserID" FromRole="AspNetUsers" ToRole="Express_Booking" />
+          <NavigationProperty Name="Flight_Booking" Relationship="Self.FK_Flight_UserID" FromRole="AspNetUsers" ToRole="Flight_Booking" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Seat" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Car_Booking" Relationship="Self.FK_Car_VehID" FromRole="Car" ToRole="Car_Booking" />
+        </EntityType>
+        <EntityType Name="Car_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VehicalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FerryPoint" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Charges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Car_UserID" FromRole="Car_Booking" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_Car_VehID" FromRole="Car_Booking" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="Cruies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShipNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Captain" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Seat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableSeat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cruies_Booking" Relationship="Self.FK_Cruies_VehID" FromRole="Cruies" ToRole="Cruies_Booking" />
+        </EntityType>
+        <EntityType Name="Cruies_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VehicalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FerryPoint" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Charges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Cruies_UserID" FromRole="Cruies_Booking" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Cruies" Relationship="Self.FK_Cruies_VehID" FromRole="Cruies_Booking" ToRole="Cruies" />
+        </EntityType>
+        <EntityType Name="Express">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Seat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableSeat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Express_Booking" Relationship="Self.FK_Express_VehID" FromRole="Express" ToRole="Express_Booking" />
+        </EntityType>
+        <EntityType Name="Express_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VehicalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FerryPoint" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Charges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Express_UserID" FromRole="Express_Booking" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Express" Relationship="Self.FK_Express_VehID" FromRole="Express_Booking" ToRole="Express" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flightCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pilot" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Seat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableSeat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Flight_Booking" Relationship="Self.FK_Flight_VehID" FromRole="Flight" ToRole="Flight_Booking" />
+        </EntityType>
+        <EntityType Name="Flight_Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VehicalID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="FerryPoint" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Charges" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Flight_UserID" FromRole="Flight_Booking" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK_Flight_VehID" FromRole="Flight_Booking" ToRole="Flight" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Car_Booking" Type="Self.Car_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Car_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruies_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Cruies_Booking" Type="Self.Cruies_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cruies_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Express_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Express_Booking" Type="Self.Express_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Express_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flight_UserID">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Flight_Booking" Type="Self.Flight_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flight_Booking">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_VehID">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Car_Booking" Type="Self.Car_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Car_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruies_VehID">
+          <End Role="Cruies" Type="Self.Cruies" Multiplicity="0..1" />
+          <End Role="Cruies_Booking" Type="Self.Cruies_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cruies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cruies_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Express_VehID">
+          <End Role="Express" Type="Self.Express" Multiplicity="0..1" />
+          <End Role="Express_Booking" Type="Self.Express_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Express">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Express_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flight_VehID">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+          <End Role="Flight_Booking" Type="Self.Flight_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flight_Booking">
+              <PropertyRef Name="VehicalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MyanTourEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Car" EntityType="Self.Car" />
+          <EntitySet Name="Car_Booking" EntityType="Self.Car_Booking" />
+          <EntitySet Name="Cruies" EntityType="Self.Cruies" />
+          <EntitySet Name="Cruies_Booking" EntityType="Self.Cruies_Booking" />
+          <EntitySet Name="Express" EntityType="Self.Express" />
+          <EntitySet Name="Express_Booking" EntityType="Self.Express_Booking" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" />
+          <EntitySet Name="Flight_Booking" EntityType="Self.Flight_Booking" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_UserID" Association="Self.FK_Car_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Car_Booking" EntitySet="Car_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruies_UserID" Association="Self.FK_Cruies_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cruies_Booking" EntitySet="Cruies_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Express_UserID" Association="Self.FK_Express_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Express_Booking" EntitySet="Express_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flight_UserID" Association="Self.FK_Flight_UserID">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Flight_Booking" EntitySet="Flight_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_VehID" Association="Self.FK_Car_VehID">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Car_Booking" EntitySet="Car_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruies_VehID" Association="Self.FK_Cruies_VehID">
+            <End Role="Cruies" EntitySet="Cruies" />
+            <End Role="Cruies_Booking" EntitySet="Cruies_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Express_VehID" Association="Self.FK_Express_VehID">
+            <End Role="Express" EntitySet="Express" />
+            <End Role="Express_Booking" EntitySet="Express_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flight_VehID" Association="Self.FK_Flight_VehID">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="Flight_Booking" EntitySet="Flight_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyanTourModelStoreContainer" CdmEntityContainer="MyanTourEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="MyanTourModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MyanTourModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MyanTourModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MyanTourModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MyanTourModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car">
+            <EntityTypeMapping TypeName="MyanTourModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Seat" ColumnName="Seat" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car_Booking">
+            <EntityTypeMapping TypeName="MyanTourModel.Car_Booking">
+              <MappingFragment StoreEntitySet="Car_Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="VehicalID" ColumnName="VehicalID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FerryPoint" ColumnName="FerryPoint" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="Charges" ColumnName="Charges" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cruies">
+            <EntityTypeMapping TypeName="MyanTourModel.Cruies">
+              <MappingFragment StoreEntitySet="Cruies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShipNumber" ColumnName="ShipNumber" />
+                <ScalarProperty Name="Captain" ColumnName="Captain" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Seat" ColumnName="Seat" />
+                <ScalarProperty Name="AvailableSeat" ColumnName="AvailableSeat" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cruies_Booking">
+            <EntityTypeMapping TypeName="MyanTourModel.Cruies_Booking">
+              <MappingFragment StoreEntitySet="Cruies_Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="VehicalID" ColumnName="VehicalID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FerryPoint" ColumnName="FerryPoint" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="Charges" ColumnName="Charges" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Express">
+            <EntityTypeMapping TypeName="MyanTourModel.Express">
+              <MappingFragment StoreEntitySet="Express">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Seat" ColumnName="Seat" />
+                <ScalarProperty Name="AvailableSeat" ColumnName="AvailableSeat" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Express_Booking">
+            <EntityTypeMapping TypeName="MyanTourModel.Express_Booking">
+              <MappingFragment StoreEntitySet="Express_Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="VehicalID" ColumnName="VehicalID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FerryPoint" ColumnName="FerryPoint" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="Charges" ColumnName="Charges" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight">
+            <EntityTypeMapping TypeName="MyanTourModel.Flight">
+              <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="flightCode" ColumnName="flightCode" />
+                <ScalarProperty Name="Pilot" ColumnName="Pilot" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Seat" ColumnName="Seat" />
+                <ScalarProperty Name="AvailableSeat" ColumnName="AvailableSeat" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight_Booking">
+            <EntityTypeMapping TypeName="MyanTourModel.Flight_Booking">
+              <MappingFragment StoreEntitySet="Flight_Booking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="VehicalID" ColumnName="VehicalID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FerryPoint" ColumnName="FerryPoint" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="Charges" ColumnName="Charges" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MyanTourModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

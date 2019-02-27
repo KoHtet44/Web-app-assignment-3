@@ -1,0 +1,159 @@
+﻿@model MyanTour.Express_Booking
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Express_Booking</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, "CustomerID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("CustomerID", null, htmlAttributes: new { @class = "form-control" })*@
+                <label class="form-control" style="width:282px"> @ViewBag.CustomerID</label>
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VehicalID, "VehicalID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("VehicalID", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.EditorFor(model => model.VehicalID, new { htmlAttributes = new { @class = "hidden" } })
+                <label class="form-control" style="width:282px"> @ViewBag.VehicalID</label>
+                @Html.ValidationMessageFor(model => model.VehicalID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FerryPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.FerryPoint, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBoxFor(model => model.FerryPoint, new { id = "fpoint", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FerryPoint, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Loc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Loc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Loc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Charges, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Charges, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Charges, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+<div id="right" class="container">
+    <div id="mapDiv" style="width: 100%; height: 500px"></div>
+    <script>
+
+            // position we will use later
+            var lat = 16.805206554650212;
+            var lon = 96.13545670576218;
+            // initialize map
+            map = L.map('mapDiv').setView([lat, lon], 13);
+            // set map tiles source
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+            // add marker to the map
+            //  marker = L.marker([lat, lon]).addTo(map);
+            // add popup to the marker
+            //   marker.bindPopup("<b>ACME CO.</b><br />This is Gusto <br />Yangon").openPopup();
+
+            //////////////////////////////////////////////////////////////////
+            map.locate({ setView: true, maxZoom: 16 });
+            function onLocationFound(e) {
+                var radius = e.accuracy / 2;
+
+                L.marker(e.latlng).addTo(map)
+                    .bindPopup("You are within " + radius + " meters from this point </br> Location :" + e.latlng).openPopup();
+
+                L.circle(e.latlng, radius).addTo(map);
+
+            }
+
+            map.on('locationfound', onLocationFound);
+            function onLocationError(e) {
+                alert(e.message);
+            }
+
+            map.on('locationerror', onLocationError);
+            function onMapClick(e) {
+                // alert("You clicked the map at " + e.latlng);
+                document.getElementById('fpoint').value = e.latlng;
+                //document.getElementById('fpointlabel').value = e.latlng;
+
+            }
+            map.on('click', onMapClick);
+
+    </script>
+</div>
+}
+
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin="">
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
